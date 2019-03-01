@@ -14,11 +14,9 @@ public class Story {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Size(min=1, max=50, message="O tamanho deve ser entre {min} e {max}")
 	private String story;
 	
 	@NotNull
-	@Size(min=1, max=10, message="O tamanho deve ser entre {min} e {max}")
 	private String imagePath;
 	
 	public Story() {
