@@ -1,0 +1,66 @@
+ html, body {
+    height: 100%;
+    margin:0;
+    padding:0;
+}
+
+div {
+    position:relative;
+    height: 100%;
+    width:100%;
+}
+
+div img {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin: auto;
+    height: 766px;
+}
+
+.story {
+    position: absolute;
+    bottom: 150px;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(24, 24, 24, 0.7);
+    z-index: 10;
+}
+
+.story span {
+    color: #ffffffc2;
+    text-align: center;
+    padding: 25px 0;
+    position: absolute;
+    opacity: 1.0;
+    
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+    text-transform: uppercase;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.bg-image {
+    /* Add the blur effect */
+   filter: blur(12px);
+   -webkit-filter: blur(12px);
+
+   /* Full height */
+   height: 100%;
+   width: 100%;
+   
+
+   /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    float: left;
+}

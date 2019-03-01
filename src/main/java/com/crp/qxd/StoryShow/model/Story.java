@@ -20,5 +20,33 @@ public class Story {
 	@NotNull
 	@Size(min=1, max=10, message="O tamanho deve ser entre {min} e {max}")
 	private String imagePath;
+	
+	public Story() {
+		
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getStory() {
+		return story;
+	}
+
+	public void setStory(String story) {
+		this.story = story;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 
 }
