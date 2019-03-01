@@ -9,7 +9,7 @@ function right() {
     } else {
         i = 0;
     }
-    renderSlide()
+    updateList()
 }
 
 function left() {
@@ -18,7 +18,7 @@ function left() {
     } else {
         i = max-1;
     }
-    renderSlide()
+    updateList()
 }
 
 function renderSlide() {
@@ -32,7 +32,7 @@ function renderSlide() {
     
 }
 
-function getList() {
+function updateList() {
 	$.ajax({
 		type : "GET",
 		dataType: "json",
@@ -41,19 +41,24 @@ function getList() {
 	    success : function(data) {
 	    	stories = data;
 	    	max = data.length;
-	    	console.log("AQUI!2")
 	    	renderSlide();
-	    }
-	})
-	
-	document.addEventListener('keydown', function(event) {
-	    if(event.keyCode == 37) {
-	        left();
-	    }
-	    else if(event.keyCode == 39) {
-	        right();
 	    }
 	})
 }
 
-$(document).ready(getList());
+function main() {
+	updateList();
+
+	setInterval(right, 5000);
+}
+
+$(document).ready(main());
+
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 37) {
+        left();
+    }
+    else if(event.keyCode == 39) {
+        right();
+    }
+})
