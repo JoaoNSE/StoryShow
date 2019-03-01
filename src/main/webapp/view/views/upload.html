@@ -2,18 +2,37 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Enviar Fotos</title>
+	<title>Enviar Story</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
 </head>
 <body>
 
-    <form method="POST" action="/upload" enctype="multipart/form-data">
-    	<input type="file" name="file" accept="image/*" capture="camera"/><br/><br/>
-    	<input type="text" name="story"/><br/><br/>
-    	<input type="submit" value="Submit" />
-	</form>
-	<img src="/imgs/0.gif">
+	<div class="container">
+	<div class="row">
+	<div class="card col">
+	<div class="card-body">
+		<h5 class="card-title">ENVIE UM STORY!! É DE GRAÇA</h5>
+		
+	    <form method="POST" action="/upload" enctype="multipart/form-data">
+	    	<div class="form-group">
+	    		<label for="file">Tire sua foto:</label>
+	    		<input type="file" class="form-control" name="file" accept="image/*" capture="camera"/><br/><br/>
+	    		<small id="photoHelp" class="form-text text-muted">Não envie nada de errado. Por favor.</small>
+    		</div>
+    		<div class="form-group">
+    			<label for="story">Coloque uma legenda:</label>
+	    		<input type="text" class="form-control" name="story"/>
+	    		<small id="storyHelp" class="form-text text-muted">A legenda é optativa ;)</small>
+    		</div>
+	    	<input type="submit" class="btn btn-primary" value="Enviar Story" />
+	    	
+		</form>
+	</div>
+	</div>
+	</div>
+	</div>
     
     <script src="js/bootstrap.min.js"></script>
 </body>
