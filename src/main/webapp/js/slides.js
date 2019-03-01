@@ -25,9 +25,17 @@ function renderSlide() {
     var canvas = document.getElementById("canvas");
     var bgIm = document.getElementById("bgimg");
     
-    console.log(stories[i].imagePath)
-
     canvas.children[0].children[0].innerHTML = stories[i].story;
+    
+    if(stories[i].story == null) {
+    	$("#story").hide();
+    	$("#story").children().hide();
+    	
+    } else {
+    	$("#story").show();
+    	$("#story").children().show();
+    }
+    
     bgIm.src = canvas.lastChild.src = "/imgs/" + stories[i].imagePath;
     
 }

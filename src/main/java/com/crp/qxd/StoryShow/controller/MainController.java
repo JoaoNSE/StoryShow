@@ -42,7 +42,8 @@ public class MainController {
 	}
 	
 	@PostMapping("/upload")
-	public String handleFileUpload(@RequestParam("file") MultipartFile file,
+	public String handleFileUpload(@RequestParam("file") MultipartFile file, 
+			@RequestParam("story") String story,
             RedirectAttributes redirectAttributes) {
 
 		try {
@@ -50,6 +51,11 @@ public class MainController {
 			
 			Story st = new Story();
 			st.setImagePath(file.getOriginalFilename());
+			//if(story == null) {
+			//	story = "";
+			//}
+			
+			st.setStory(story);
 			
 			storyRepo.save(st);
 		} catch (StorageException e) {
