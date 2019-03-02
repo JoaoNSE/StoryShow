@@ -5,7 +5,6 @@
 	<title>Enviar Story</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css">
 </head>
 <body>
 
@@ -15,12 +14,20 @@
 	<div class="card-body">
 		<h5 class="card-title">ENVIE UM STORY, É DE GRAÇA!!</h5>
 		
-	    <form method="POST" action="/upload" enctype="multipart/form-data">
+	    <form method="POST" action="/" enctype="multipart/form-data">
 	    	<div class="form-group">
-	    		<label for="file">Tire sua foto
-	    		
-	    		<input type="file" class="form-control" name="file" accept="image/*" capture="camera"/>
-	    		</label>
+	    		<label for="file">Tire sua foto</label>
+	    		<div>
+					<button class= "btn btn-primary btn-block" onclick="callCamera(event)">CAMERA</button>
+				
+					<input id="foto" type="file" name="file" accept="image/*" capture="camera" hidden onchange="refreshPrev(this)"/>
+					
+					<div class="card">
+					<div class="card-body">
+						<img id="foto-prev" src="" style="display: none" height="200px" width="100%"/>
+					</div>
+					</div>
+				</div>
 	    		<small id="photoHelp" class="form-text text-muted">Não envie nada de errado. Por favor.</small>
     		</div>
     		<div class="form-group">
@@ -29,16 +36,36 @@
 	    		<small id="storyHelp" class="form-text text-muted">A legenda é optativa 😉</small>
     		</div>
     		
-    			<label>Agora é só enviar 😁</label><br>
-	    		<input type="submit" class="btn btn-primary" value="Enviar Story" />
-    		
+   			<label>Agora é só enviar 😁</label><br>
+    		<input type="submit" class="btn btn-primary" value="Enviar Story" />    		
 	    	
 		</form>
 	</div>
 	</div>
 	</div>
 	</div>
+
     
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    	function callCamera(e) {
+    		e.preventDefault();
+    		$('#foto').trigger('click');
+    	}
+    	
+    	function refreshPrev(input) {
+    		if(input.files && input.files[0]) {
+    			var reader = new FileReader();
+
+    		    reader.onload = function(e) {
+    		      $('#foto-prev').attr('src', e.target.result);
+    		      $('#foto-prev').show();
+    		    };
+
+    		    reader.readAsDataURL(input.files[0]);
+    		}
+    	}
+    </script>
 </body>
 </html>

@@ -32,17 +32,17 @@ public class MainController {
         this.storageService = storageService;
     }
 
-	@GetMapping("/")
+	@GetMapping("/stories/show")
 	public String home() {
 		 return "index";
 	}
 	
-	@GetMapping("/upload")
+	@GetMapping("/")
 	public String upload() {
 		return "upload";
 	}
 	
-	@PostMapping("/upload")
+	@PostMapping("/")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file, 
 			@RequestParam("story") String story,
             RedirectAttributes redirectAttributes) {
@@ -63,7 +63,7 @@ public class MainController {
 		}
         
 
-        return "redirect:/upload";
+        return "redirect:/";
     }
 	
 	@GetMapping("/getList")
