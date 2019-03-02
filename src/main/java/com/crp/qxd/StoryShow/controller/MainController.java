@@ -1,6 +1,7 @@
 package com.crp.qxd.StoryShow.controller;
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,15 +52,14 @@ public class MainController {
 			
 			Story st = new Story();
 			st.setImagePath(file.getOriginalFilename());
-			//if(story == null) {
-			//	story = "";
-			//}
 			
-			st.setStory(story);
+			st.setStoryText(story);
+			
+			st.setUploadTime(new Date());
 			
 			storyRepo.save(st);
 		} catch (StorageException e) {
-			
+			return "upload";
 		}
         
 
@@ -69,8 +69,8 @@ public class MainController {
 	@GetMapping("/getList")
 	@ResponseBody
 	public List<Story> getStoriesList() {
-		List<Story> lista = storyRepo.findAll();
-		return lista;
+		//List<Story> lista = storyRepo.findAll();
+		return storyRepo.getValidStories();
 	}
 	
 }

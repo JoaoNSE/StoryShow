@@ -1,4 +1,5 @@
 var i = 0;
+var last_id = 0;
 var max = 3;
 
 var stories;
@@ -25,9 +26,19 @@ function renderSlide() {
     var canvas = document.getElementById("canvas");
     var bgIm = document.getElementById("bgimg");
     
-    canvas.children[0].children[0].innerHTML = stories[i].story;
+    if (max === 0) {
+    	stories = Array(1);
+    	stories[0] = {imagePath: "no_image.png", storyText: "sem fotos ainda"};
+    	i = 0;
+    } else {
+    	console.log(stories);
+    	last_id = stories[i].id;
+    	
+    }
     
-    if(stories[i].story == null) {
+    canvas.children[0].children[0].innerHTML = stories[i].storyText;
+    console.log(stories[i]);
+    if(stories[i].storyText === null || stories[i].storyText === "") {
     	$("#story").hide();
     	$("#story").children().hide();
     	
@@ -49,6 +60,13 @@ function updateList() {
 	    success : function(data) {
 	    	stories = data;
 	    	max = data.length;
+	    	if (max < 0) {
+	    		i = stories.findIndex(function(obj){return obj.id == last_id});
+	    		if (i === -1) {
+	    			i = 0;
+	    		}
+	    	}
+	    	
 	    	renderSlide();
 	    }
 	})
